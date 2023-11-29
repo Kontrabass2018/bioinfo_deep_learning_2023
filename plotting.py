@@ -34,7 +34,7 @@ def plot_tsne(X_tr_tsne, labels):
     plt.savefig(f"figures/figTSNE_{str(datetime.datetime.now())}.pdf")
 
 
-def plot_umap(X_train_umap, X_test_umap, labels, s= 8, figsize = (6,5)):
+def plot_umap(X_train_umap, X_test_umap, Y_train, Y_test, labels, s= 8, figsize = (6,5)):
     fig, ax1 = plt.subplots(figsize=figsize)
     ax1.grid(visible=True,linestyle="--")
     ax1.set_axisbelow(True)
