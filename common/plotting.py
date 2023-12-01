@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime 
 import random
+from scipy.stats import pearsonr
 
 def main():
     pass 
