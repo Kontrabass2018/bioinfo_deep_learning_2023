@@ -7,3 +7,5 @@
 data
 
 common/__pycache__/*
+
+*.pyc
