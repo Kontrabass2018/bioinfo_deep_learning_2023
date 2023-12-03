@@ -5,3 +5,5 @@
 *.ali
 
 data
+
+common/__pycache__
