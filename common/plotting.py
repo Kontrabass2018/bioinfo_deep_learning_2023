@@ -67,7 +67,7 @@ def plot_learning_curves(trl, tstl, trc, tstc, tpm_data, X_train, X_test):
     axes[0].plot(steps, tstl, label= "test")
     axes[1].plot(steps, trc * 100, label = "train")
     axes[1].plot(steps, tstc * 100, label= "test")
-    axes[0].set_ylabel("CrossEntropyLoss")
+    axes[0].set_ylabel("Loss")
     axes[1].set_ylabel("Pearson Correlation")
     axes[1].set_ylim((0,100))
     axes[1].set_xlabel("Gradient step")
@@ -75,20 +75,23 @@ def plot_learning_curves(trl, tstl, trc, tstc, tpm_data, X_train, X_test):
     axes[0].set_title(f"Learning curves of DNN on ML data\nN={tpm_data.shape[1]}, N(train)={X_train.shape[0]}, N(test)={X_test.shape[0]}")
     plt.savefig(f"figures/DNN_learning_curves{str(datetime.datetime.now())}.pdf")
 
-def plot_ae_performance(mm, X_test):
+
+def plot_ae_performance(mm, X_test, modeltype = "AE", dataset = "TPM_DATA"):
     y_tst_out = mm(X_test)
     outs = y_tst_out.flatten().detach().numpy()
     trues = X_test.flatten().detach().numpy()
     corr =  pearsonr(outs,trues).statistic
     plt.figure(figsize = (9,7))
     plt.grid(visible =True, alpha = 0.5, linestyle = "--")
-    plt.plot([0,1],[0,1], color = "blue", alpha =0.5, linestyle = "--")
+    lims = max([max(outs), max(trues)])
+    plt.plot([0,lims],[0,lims], color = "blue", alpha =0.5, linestyle = "--")
     plt.hexbin(outs, trues, bins = "log")
     plt.xlabel("Predicted Expressions (normalised TPM)")
     plt.ylabel("True expressions")
     plt.colorbar(label='log10(N)')
     plt.axis("equal")
     plt.title(f"Auto-Encoder performance of reconstruction on test set.\nPearson Correlation: {round(corr,4)}")
-    
+    plt.savefig(f"figures/{modeltype}_{dataset}_reconstruction_{str(datetime.datetime.now())}.pdf")
+
 if __name__ == "__main__":
     main()
