@@ -13,3 +13,5 @@ common/__pycache__/*
 common/__pycache__/dataprocessing.cpython-310.pyc
 
 common/__pycache__/plotting.cpython-310.pyc
+
+figures
