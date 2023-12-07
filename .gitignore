@@ -9,3 +9,9 @@ data
 common/__pycache__/*
 
 *.pyc
+
+common/__pycache__/dataprocessing.cpython-310.pyc
+
+common/__pycache__/plotting.cpython-310.pyc
+
+figures
