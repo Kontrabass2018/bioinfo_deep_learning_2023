@@ -173,6 +173,5 @@ cython_debug/
 
 *.sam
 *.bam
-*.pdf
 *.fastq
 *.fai

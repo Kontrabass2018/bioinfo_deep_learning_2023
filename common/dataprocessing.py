@@ -40,8 +40,8 @@ def load_tcga(inpath = "data/TCGA_TPM_hv_subset.h5"):
     dataset = h5py.File(inpath,"r")
     expr_data = dataset['data'][:,:] 
     labels = np.array(dataset["labels"][:], dtype = str)
-    samples = np.array(dataset["cols"][:], dtype = str)
-    genes = np.array(dataset["rows"][:], dtype = str)
+    samples = np.array(dataset["rows"][:], dtype = str)
+    genes = np.array(dataset["cols"][:], dtype = str)
     return MLdataset(expr_data, samples, genes, labels) 
 
 def load_tcga_brca(inpath = "data/TCGA_BRCA_fpkm_hv_norm_PAM50.h5"):
