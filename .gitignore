@@ -8,6 +8,8 @@ data
 
 common/__pycache__/*
 
+__pycache__/*
+
 *.pyc
 
 common/__pycache__/dataprocessing.cpython-310.pyc
