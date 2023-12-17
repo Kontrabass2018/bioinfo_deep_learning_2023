@@ -25,7 +25,7 @@ def load_datasets():
                  ])
 
 def load_leucegene():
-    infile = "data/leucegene_GE_CDS_TPM_clinical.h5"
+    infile = "./data/leucegene_GE_CDS_TPM_clinical.h5"
     inf = h5py.File(infile, "r")
     tpm_data = np.log10(inf["data"][:,:] + 1)
     genes = np.array(inf["genes"][:], dtype = str)
@@ -36,7 +36,7 @@ def load_leucegene():
     
     return MLSurvDataset(tpm_data, samples, genes, labels, survt, surve)
 
-def load_tcga(inpath = "data/TCGA_TPM_hv_subset.h5"):
+def load_tcga(inpath = "./data/TCGA_TPM_hv_subset.h5"):
     dataset = h5py.File(inpath,"r")
     expr_data = dataset['data'][:,:] 
     labels = np.array(dataset["labels"][:], dtype = str)
@@ -44,7 +44,7 @@ def load_tcga(inpath = "data/TCGA_TPM_hv_subset.h5"):
     genes = np.array(dataset["cols"][:], dtype = str)
     return MLdataset(expr_data, samples, genes, labels) 
 
-def load_tcga_brca(inpath = "data/TCGA_BRCA_fpkm_hv_norm_PAM50.h5"):
+def load_tcga_brca(inpath = "./data/TCGA_BRCA_fpkm_hv_norm_PAM50.h5"):
     dataset = h5py.File(inpath,"r")
     expr_data = dataset['data'][:,:] 
     labels = np.array(dataset["labels"][:], dtype = str)
@@ -52,7 +52,7 @@ def load_tcga_brca(inpath = "data/TCGA_BRCA_fpkm_hv_norm_PAM50.h5"):
     genes = np.array(dataset["genes"][:], dtype = str)
     return MLdataset(expr_data, samples, genes, labels) 
 
-def load_target_all(inpath = "data/TARGET_ALL_264_norm_tpm_lab.h5"):
+def load_target_all(inpath = "./data/TARGET_ALL_264_norm_tpm_lab.h5"):
     dataset = h5py.File(inpath,"r")
     expr_data = dataset['data'][:,:] 
     labels = np.array(dataset["labels"][:], dtype = str)
